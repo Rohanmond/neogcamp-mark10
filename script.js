@@ -9,9 +9,10 @@ checkButton.addEventListener("click",function validateBillAmountAndCashAmount(){
     console.log(cashGiven.value,billAmount.value)
     var cash=parseInt(cashGiven.value);
     var bill=parseInt(billAmount.value);
-
+    
     message.style.display="none";
-    if(billAmount.value>0){
+    if(cash<0|| bill<0 ) showMessage(message,"CashGiven or billAmount can't be negative.");
+    else{if(billAmount.value>0){
         if(cash>=bill){
             const amountToBeReturned=cash-bill;
             calculateChange(amountToBeReturned);
@@ -20,7 +21,7 @@ checkButton.addEventListener("click",function validateBillAmountAndCashAmount(){
         }
     }else{
        showMessage(message,"Invalid Bill amount");
-    }
+    }}
 });
 
 function calculateChange(amountToBeReturned){
